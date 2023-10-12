@@ -17,6 +17,17 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+#region configure identity 
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireUppercase= false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireNonAlphanumeric= false;
+    options.Password.RequiredLength = 2;
+    options.Password.RequireDigit = false;
+    options.Password.RequiredUniqueChars = 0;
+});
+#endregion
 
 var app = builder.Build();
 
