@@ -117,6 +117,12 @@ namespace IdentityProject.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
+            #region id user is alread loggedin, no access to register page
+            if (User.Identity.IsAuthenticated)
+            {
+                Response.Redirect("/");
+            }
+            #endregion
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }

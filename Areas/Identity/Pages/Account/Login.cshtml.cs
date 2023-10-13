@@ -87,6 +87,12 @@ namespace IdentityProject.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
+            #region redirect if user is already logged in, no access to register/log in page
+            if (User.Identity.IsAuthenticated)
+            {
+                Response.Redirect("/");
+            }
+            #endregion
             if (!string.IsNullOrEmpty(ErrorMessage))
             {
                 ModelState.AddModelError(string.Empty, ErrorMessage);
