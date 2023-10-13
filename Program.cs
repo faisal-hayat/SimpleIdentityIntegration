@@ -26,6 +26,7 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequiredLength = 2;
     options.Password.RequireDigit = false;
     options.Password.RequiredUniqueChars = 0;
+    options.SignIn.RequireConfirmedEmail = false;
 });
 #endregion
 
